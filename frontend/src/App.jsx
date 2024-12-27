@@ -12,6 +12,8 @@ import Board from "./Page/Board/Board";
 import Services from "./Page/Services/Services";
 import Contact from "./Page/Contact/Contact";
 
+import AdminLogin from "./Page/Admin/AdminLogin";
+
 function Layout() {
   return (
     <>
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <MainPage />
+        element: <MainPage />,
       },
       {
         path: "/about",
@@ -50,10 +52,14 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
-      }
-    ]
-  }
-])
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminLogin />,
+  },
+]);
 
 function App() {
   return <RouterProvider router={router} />;
