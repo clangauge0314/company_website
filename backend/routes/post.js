@@ -92,4 +92,39 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const { title, content, fileUrl } = req.body;
+
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ message: "게시글을 찾을 수 없습니다." });
+    }
+
+    post.title = title;
+    post.content = content;
+    post.fileUrl = fileUrl;
+    post.updatedAt = Date.now();
+
+    await post.save();
+    res.json(post);
+  } catch (error) {
+    res.status(500).json({ message: "서버 오류가 발생했습니다." });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+    try {
+      const post = await Post.findById(req.params.id);
+      if (!post) {
+        return res.status(404).json({ message: "게시글을 찾을 수 없습니다." });
+      }
+  
+      await post.deleteOne();
+      res.json({ message: "게시글이 삭제가 되었습니다." });
+    } catch (error) {
+      res.status(500).json({ message: "서버 오류가 발생했습니다." });
+    }
+  });
+
 module.exports = router;
