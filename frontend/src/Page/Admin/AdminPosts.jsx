@@ -77,7 +77,9 @@ const AdminPosts = () => {
       </div>
 
       <div className="mb-4 flex justify-between items-center">
-        <div className="text-lg font-bold text-gray-600">총 0개의 게시물</div>
+        <div className="text-lg font-bold text-gray-600">
+          총 {paginatedPosts.length}개의 게시물
+        </div>
 
         <div className="flex items-center space-x-2">
           <label className="text-base font-bold text-gray-600">
@@ -128,8 +130,10 @@ const AdminPosts = () => {
                   <td className="px-4 py-3 overflow-hidden overflow-ellipsis whitespace-nowrap">
                     {post.title}
                   </td>
-                  <td className="px-4 py-3 overflow-hidden overflow-ellipsis whitespace-nowrap">
-                    {post.content}
+                  <td className="px-4 py-3 overflow-hidden text-ellipsis whitespace-nowrap">
+                    {post.content.length > 25
+                      ? `${post.content.substring(0, 25)}...`
+                      : post.content}
                   </td>
                   <td className="px-4 py-3">{post.views}</td>
                   <td className="px-4 py-3">
