@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
+import Swal from "sweetalert2";
 
 const AdminPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -20,6 +21,32 @@ const AdminPosts = () => {
 
     fetchPosts();
   }, []);
+
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: '삭제하시겠습니까?',
+      text: "이 작업은 되돌릴 수 없습니다!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '삭제',
+      cancelButtonText: '취소'
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`http://localhost:3000/api/post/${id}`, {
+          withCredentials: true
+        });
+        setPosts(posts.filter(post => post._id !== id));
+        Swal.fire('삭제완료!', '게시글이 성공적으로 삭제되었습니다.', 'success');
+      } catch (error) {
+        console.error('삭제 실패:', error);
+        Swal.fire('오류 발생!', '삭제 중 문제가 발생했습니다.', 'error');
+      }
+    }
+  };
 
   const getFileNameFromUrl = (url) => {
     if (!url) return "";
@@ -204,7 +231,7 @@ const AdminPosts = () => {
                       >
                         수정
                       </button>
-                      <button className="px-3 py-1.5 bg-red-500 text-white rounded hover:bg-red-600 whitespace-nowrap writing-normal">
+                      <button onClick={() => handleDelete(post._id)} className="px-3 py-1.5 bg-red-500 text-white rounded hover:bg-red-600 whitespace-nowrap writing-normal">
                         삭제
                       </button>
                     </div>
