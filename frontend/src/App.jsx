@@ -17,6 +17,7 @@ import MainPage from "./Page/MainPage/MainPage";
 import About from "./Page/About/About";
 import Leadership from "./Page/Leadership/Leadership";
 import Board from "./Page/Board/Board";
+import SinglePost from "./Page/SinglePost/SinglePost";
 import Services from "./Page/Services/Services";
 import Contact from "./Page/Contact/Contact";
 
@@ -25,6 +26,8 @@ import AdminPosts from "./Page/Admin/AdminPosts";
 import AdminEditPost from "./Page/Admin/AdminEditPost";
 import AdminCreatePost from "./Page/Admin/AdminCreatePost";
 import AdminContacts from "./Page/Admin/AdminContacts";
+
+
 
 function AuthRedirectRoute() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -126,6 +129,10 @@ const router = createBrowserRouter([
       {
         path: "/board",
         element: <Board />,
+      },
+      {
+        path: "/post/:id",
+        element: <SinglePost />
       },
       {
         path: "/our-services",

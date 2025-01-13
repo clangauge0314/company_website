@@ -22,6 +22,7 @@ router.post("/signup", async (req, res) => {
     });
 
     await user.save();
+    console.log("회원가입이 완료되었습니다. ", user);
     res.status(201).json({ message: "회원가입이 완료되었습니다." });
   } catch (error) {
     res.status(500).json({ message: "서버 오류가 발생했습니다." });
