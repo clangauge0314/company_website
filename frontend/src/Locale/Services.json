@@ -1,0 +1,152 @@
+{
+  "ko": {
+    "services": {
+      "mainTitle": "우리의 서비스",
+      "subTitle": "혁신적인 기술로 비즈니스의 성공을 지원합니다.",
+      "list": [
+        {
+          "title": "맞춤형 소프트웨어 개발",
+          "description": "고객의 요구사항에 맞는 최적화된 솔루션을 제공합니다.",
+          "icon": "💻"
+        },
+        {
+          "title": "클라우드 서비스",
+          "description": "안정적이고 확장 가능한 클라우드 인프라 구축 및 관리",
+          "icon": "☁️"
+        },
+        {
+          "title": "보안 솔루션",
+          "description": "최신 보안 기술을 적용한 안전한 시스템 구축",
+          "icon": "🔒"
+        },
+        {
+          "title": "기술 컨설팅",
+          "description": "전문가의 분석을 통한 최적의 기술 전략 수립",
+          "icon": "📊"
+        }
+      ],
+      "whyUs": {
+        "title": "왜 우리를 선택해야 할까요?",
+        "reasons": [
+          {
+            "title": "10년+ 경험",
+            "description": "다양한 산업 분야의 프로젝트 경험"
+          },
+          {
+            "title": "전문가 팀",
+            "description": "숙련된 개발자와 컨설턴트로 구성"
+          },
+          {
+            "title": "24/7 지원",
+            "description": "연중무휴 기술 지원 서비스"
+          }
+        ]
+      },
+      "process": {
+        "title": "프로젝트 진행 프로세스",
+        "steps": [
+          {
+            "step": "01",
+            "title": "요구사항 분석",
+            "desc": "고객의 니즈와 목표를 정확히 파악"
+          },
+          {
+            "step": "02",
+            "title": "설계 및 기획",
+            "desc": "최적의 솔루션 설계와 개발 계획 수립"
+          },
+          {
+            "step": "03",
+            "title": "개발 및 테스트",
+            "desc": "체계적인 개발과 품질 검증 진행"
+          },
+          {
+            "step": "04",
+            "title": "배포 및 유지보수",
+            "desc": "안정적인 서비스 운영과 지속적인 개선"
+          }
+        ]
+      },
+      "cta": {
+        "title": "프로젝트를 시작할 준비가 되셨나요?",
+        "subtitle": "전문가와 상담하고 최적의 솔루션을 찾아보세요.",
+        "button": "무료 상담 신청하기"
+      }
+    }
+  },
+  "en": {
+    "services": {
+      "mainTitle": "Our Services",
+      "subTitle": "Supporting business success with innovative technology.",
+      "list": [
+        {
+          "title": "Custom Software Development",
+          "description": "Providing optimized solutions tailored to customer requirements.",
+          "icon": "💻"
+        },
+        {
+          "title": "Cloud Services",
+          "description": "Building and managing stable and scalable cloud infrastructure",
+          "icon": "☁️"
+        },
+        {
+          "title": "Security Solutions",
+          "description": "Building secure systems with the latest security technology",
+          "icon": "🔒"
+        },
+        {
+          "title": "Technical Consulting",
+          "description": "Establishing optimal technical strategies through expert analysis",
+          "icon": "📊"
+        }
+      ],
+      "whyUs": {
+        "title": "Why Choose Us?",
+        "reasons": [
+          {
+            "title": "10+ Years Experience",
+            "description": "Project experience across various industries"
+          },
+          {
+            "title": "Expert Team",
+            "description": "Composed of skilled developers and consultants"
+          },
+          {
+            "title": "24/7 Support",
+            "description": "Round-the-clock technical support service"
+          }
+        ]
+      },
+      "process": {
+        "title": "Project Process",
+        "steps": [
+          {
+            "step": "01",
+            "title": "Requirements Analysis",
+            "desc": "Accurately identifying customer needs and goals"
+          },
+          {
+            "step": "02",
+            "title": "Design & Planning",
+            "desc": "Establishing optimal solution design and development plans"
+          },
+          {
+            "step": "03",
+            "title": "Development & Testing",
+            "desc": "Systematic development and quality verification"
+          },
+          {
+            "step": "04",
+            "title": "Deployment & Maintenance",
+            "desc": "Stable service operation and continuous improvement"
+          }
+        ]
+      },
+      "cta": {
+        "title": "Ready to Start Your Project?",
+        "subtitle": "Consult with experts and find the optimal solution.",
+        "button": "Request Free Consultation"
+      }
+    }
+  }
+}

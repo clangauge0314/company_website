@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
+import ContactLocale from "../../Locale/Contact.json";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,24 @@ const Contact = () => {
     message: "",
     status: "in progress",
   });
+
+  const [language, setLanguage] = useState(localStorage.getItem('language') || 'ko');
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setLanguage(localStorage.getItem('language') || 'ko');
+    };
+
+    window.addEventListener('languageChange', handleLanguageChange);
+    return () => {
+      window.removeEventListener('languageChange', handleLanguageChange);
+    };
+  }, []);
+
+  const t = (key) => {
+    const keys = key.split(".");
+    return keys.reduce((obj, k) => obj[k], ContactLocale[language]);
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -27,7 +46,7 @@ const Contact = () => {
       );
 
       if (response.status === 201) {
-        alert("문의가 성공적으로 접수되었습니다.");
+        alert(t("contact.alerts.success"));
         setFormData({
           name: "",
           email: "",
@@ -37,8 +56,8 @@ const Contact = () => {
         });
       }
     } catch (error) {
-      console.log("에러 발생: ", error);
-      alert("문의 접수 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+      console.log("Error: ", error);
+      alert(t("contact.alerts.error"));
     }
   };
 
@@ -64,11 +83,10 @@ const Contact = () => {
       >
         <motion.div className="text-center mb-16" variants={fadeInVariants} custom={1}>
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
-            문의하기
+            {t("contact.title")}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            태양광 설비 설치부터 유지보수까지, 전문가와 상담하세요. 24시간 내에
-            답변드리겠습니다.
+            {t("contact.subtitle")}
           </p>
         </motion.div>
         <motion.div
@@ -85,13 +103,13 @@ const Contact = () => {
               <div className="space-y-6">
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">
-                    이름
+                    {t("contact.form.name")}
                   </label>
                   <input
                     type="text"
                     name="name"
                     className="w-full p-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors duration-300"
-                    placeholder="홍길동"
+                    placeholder={t("contact.form.placeholders.name")}
                     required
                     value={formData.name}
                     onChange={handleChange}
@@ -99,13 +117,13 @@ const Contact = () => {
                 </div>
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">
-                    이메일
+                    {t("contact.form.email")}
                   </label>
                   <input
                     type="email"
                     name="email"
                     className="w-full p-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors duration-300"
-                    placeholder="example@example.com"
+                    placeholder={t("contact.form.placeholders.email")}
                     required
                     value={formData.email}
                     onChange={handleChange}
@@ -113,13 +131,13 @@ const Contact = () => {
                 </div>
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">
-                    전화번호
+                    {t("contact.form.phone")}
                   </label>
                   <input
                     type="tel"
                     name="phone"
                     className="w-full p-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors duration-300"
-                    placeholder="010-1234-5678"
+                    placeholder={t("contact.form.placeholders.phone")}
                     required
                     value={formData.phone}
                     onChange={handleChange}
@@ -127,19 +145,19 @@ const Contact = () => {
                 </div>
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">
-                    문의 내용
+                    {t("contact.form.message")}
                   </label>
                   <textarea
                     name="message"
                     className="w-full p-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors duration-300 h-40"
-                    placeholder="문의하실 내용을 자세히 적어주세요."
+                    placeholder={t("contact.form.placeholders.message")}
                     required
                     value={formData.message}
                     onChange={handleChange}
                   />
                 </div>
                 <button className="w-full bg-blue-600 text-white py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-300">
-                  문의하기
+                  {t("contact.form.submit")}
                 </button>
               </div>
             </form>
@@ -148,24 +166,24 @@ const Contact = () => {
           <motion.div className="space-y-8" variants={fadeInVariants} custom={4}>
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                연락처 정보
+                {t("contact.contact_info.title")}
               </h3>
               <div className="space-y-6">
                 {[
                   {
-                    title: "전화",
-                    info: "02-1234-5678",
-                    desc: "평일 09:00 - 18:00",
+                    title: t("contact.contact_info.phone.title"),
+                    info: t("contact.contact_info.phone.info"),
+                    desc: t("contact.contact_info.phone.desc"),
                   },
                   {
-                    title: "이메일",
-                    info: "support@example.com",
-                    desc: "24시간 접수 가능",
+                    title: t("contact.contact_info.email.title"),
+                    info: t("contact.contact_info.email.info"),
+                    desc: t("contact.contact_info.email.desc"),
                   },
                   {
-                    title: "주소",
-                    info: "서울특별시 강남구 삼성동 123번지",
-                    desc: "본사",
+                    title: t("contact.contact_info.address.title"),
+                    info: t("contact.contact_info.address.info"),
+                    desc: t("contact.contact_info.address.desc"),
                   },
                 ].map((item, index) => (
                   <div key={index} className="flex items-start">

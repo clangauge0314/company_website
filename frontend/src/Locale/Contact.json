@@ -1,0 +1,84 @@
+{
+  "ko": {
+    "contact": {
+      "title": "문의하기",
+      "subtitle": "태양광 설비 설치부터 유지보수까지, 전문가와 상담하세요. 24시간 내에 답변드리겠습니다.",
+      "form": {
+        "name": "이름",
+        "email": "이메일",
+        "phone": "전화번호",
+        "message": "문의 내용",
+        "submit": "문의하기",
+        "placeholders": {
+          "name": "홍길동",
+          "email": "example@example.com",
+          "phone": "010-1234-5678",
+          "message": "문의하실 내용을 자세히 적어주세요."
+        }
+      },
+      "contact_info": {
+        "title": "연락처 정보",
+        "phone": {
+          "title": "전화",
+          "info": "02-1234-5678",
+          "desc": "평일 09:00 - 18:00"
+        },
+        "email": {
+          "title": "이메일",
+          "info": "support@example.com",
+          "desc": "24시간 접수 가능"
+        },
+        "address": {
+          "title": "주소",
+          "info": "서울특별시 강남구 삼성동 123번지",
+          "desc": "본사"
+        }
+      },
+      "alerts": {
+        "success": "문의가 성공적으로 접수되었습니다.",
+        "error": "문의 접수 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."
+      }
+    }
+  },
+  "en": {
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "From solar installation to maintenance, consult with our experts. We'll respond within 24 hours.",
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Message",
+        "submit": "Submit Inquiry",
+        "placeholders": {
+          "name": "John Doe",
+          "email": "example@example.com",
+          "phone": "010-1234-5678",
+          "message": "Please provide detailed information about your inquiry."
+        }
+      },
+      "contact_info": {
+        "title": "Contact Information",
+        "phone": {
+          "title": "Phone",
+          "info": "02-1234-5678",
+          "desc": "Weekdays 09:00 - 18:00"
+        },
+        "email": {
+          "title": "Email",
+          "info": "support@example.com",
+          "desc": "24/7 Available"
+        },
+        "address": {
+          "title": "Address",
+          "info": "123, Samsung-dong, Gangnam-gu, Seoul",
+          "desc": "Headquarters"
+        }
+      },
+      "alerts": {
+        "success": "Your inquiry has been successfully submitted.",
+        "error": "An error occurred while submitting your inquiry. Please try again later."
+      }
+    }
+  }
+}

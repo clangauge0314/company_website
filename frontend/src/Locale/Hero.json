@@ -1,0 +1,60 @@
+{
+  "ko": {
+    "title": {
+      "main": "태양광 설비 전문가와 함께",
+      "highlight": "미래를 만들어갑니다."
+    },
+    "description": "안전하고 효율적인 태양광 설비 설치부터 유지보수까지, 전문가들이 함께합니다.",
+    "buttons": {
+      "consult": "상담 신청하기",
+      "learnMore": "더 알아보기"
+    },
+    "stats": {
+      "installations": {
+        "number": "1,200+",
+        "label": "설치 완료"
+      },
+      "satisfaction": {
+        "number": "98%",
+        "label": "고객 만족도"
+      },
+      "experience": {
+        "number": "15년+",
+        "label": "업계 경력"
+      },
+      "support": {
+        "number": "24/7",
+        "label": "기술 지원"
+      }
+    }
+  },
+  "en": {
+    "title": {
+      "main": "Together with Solar Power Experts",
+      "highlight": "We Create the Future"
+    },
+    "description": "From safe and efficient solar power installation to maintenance, our experts are with you.",
+    "buttons": {
+      "consult": "Get Consultation",
+      "learnMore": "Learn More"
+    },
+    "stats": {
+      "installations": {
+        "number": "1,200+",
+        "label": "Installations"
+      },
+      "satisfaction": {
+        "number": "98%",
+        "label": "Client Satisfaction"
+      },
+      "experience": {
+        "number": "15+ Years",
+        "label": "Industry Experience"
+      },
+      "support": {
+        "number": "24/7",
+        "label": "Technical Support"
+      }
+    }
+  }
+}

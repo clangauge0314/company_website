@@ -1,0 +1,76 @@
+{
+  "ko": {
+    "title": "회사 소개",
+    "subtitle": "혁신적인 기술 솔루션을 제공하는 글로벌 기업",
+    "description": {
+      "part1": "ABC Company는 2003년 설립 이후 지속적인 혁신과 성장을 통해",
+      "part2": "글로벌 시장에서 인정받는 기술 기업으로 성장해왔습니다.",
+      "part3": "최첨단 기술과 전문성을 바탕으로 고객의 니즈에 최적화된 솔루션을 제공하며,",
+      "part4": "친환경 에너지 솔루션을 선도하고 있습니다."
+    },
+    "values": {
+      "innovation": {
+        "title": "혁신",
+        "desc": "끊임없는 도전과 혁신으로 미래를 선도합니다"
+      },
+      "trust": {
+        "title": "신뢰",
+        "desc": "고객과의 신뢰를 최우선 가치로 삼습니다"
+      },
+      "growth": {
+        "title": "성장",
+        "desc": "구성원들의 지속적인 성장을 지원합니다"
+      }
+    },
+    "vision": {
+      "title": "비전",
+      "content": "2030년까지 글로벌 시장을 선도하는 기술 혁신 기업으로 도약하여, 더 나은 세상을 만드는데 기여하겠습니다."
+    },
+    "history": {
+      "title": "회사 연혁",
+      "events": {
+        "2023": "글로벌 시장 진출",
+        "2022": "시리즈 B 투자 유치",
+        "2021": "주요 기술 특허 획득",
+        "2020": "연구개발센터 설립"
+      }
+    }
+  },
+  "en": {
+    "title": "About Us",
+    "subtitle": "A Global Company Providing Innovative Technology Solutions",
+    "description": {
+      "part1": "Since its establishment in 2003, ABC Company has grown",
+      "part2": "into a globally recognized technology company through continuous innovation and growth.",
+      "part3": "Based on cutting-edge technology and expertise, we provide optimized solutions for customer needs,",
+      "part4": "leading eco-friendly energy solutions."
+    },
+    "values": {
+      "innovation": {
+        "title": "Innovation",
+        "desc": "Leading the future through continuous challenge and innovation"
+      },
+      "trust": {
+        "title": "Trust",
+        "desc": "Making trust with customers our top priority"
+      },
+      "growth": {
+        "title": "Growth",
+        "desc": "Supporting continuous growth of our members"
+      }
+    },
+    "vision": {
+      "title": "Vision",
+      "content": "By 2030, we will become a leading technology innovation company in the global market, contributing to creating a better world."
+    },
+    "history": {
+      "title": "Company History",
+      "events": {
+        "2023": "Global Market Entry",
+        "2022": "Series B Investment",
+        "2021": "Major Technology Patent Acquisition",
+        "2020": "R&D Center Establishment"
+      }
+    }
+  }
+} 

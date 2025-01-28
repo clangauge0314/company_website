@@ -1,0 +1,38 @@
+{
+  "ko": {
+    "menu": {
+      "home": "홈",
+      "about": "회사 정보",
+      "leadership": "임원 소개",
+      "board": "업무 게시판",
+      "services": "제공 기술",
+      "contact": "문의하기"
+    },
+    "company": {
+      "name": "ABC Company"
+    },
+    "buttons": {
+      "menu": "메뉴",
+      "close": "닫기"
+    },
+    "language": "한국어"
+  },
+  "en": {
+    "menu": {
+      "home": "Home",
+      "about": "About Us",
+      "leadership": "Leadership",
+      "board": "Board",
+      "services": "Our Services",
+      "contact": "Contact"
+    },
+    "company": {
+      "name": "ABC Company"
+    },
+    "buttons": {
+      "menu": "Menu",
+      "close": "Close"
+    },
+    "language": "English"
+  }
+}

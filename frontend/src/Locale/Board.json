@@ -1,0 +1,50 @@
+{
+  "ko": {
+    "board": {
+      "title": "업무 게시판",
+      "search": {
+        "title": "제목",
+        "placeholder": "검색어를 입력하세요",
+        "dateStart": "작성일 시작:",
+        "dateEnd": "작성일 끝:",
+        "itemsPerPage": "페이지당 표시:",
+        "itemsCount": "개"
+      },
+      "table": {
+        "number": "번호",
+        "title": "제목",
+        "date": "작성일",
+        "views": "조회수"
+      },
+      "pagination": {
+        "prev": "이전",
+        "next": "다음"
+      },
+      "noPosts": "게시글이 없습니다."
+    }
+  },
+  "en": {
+    "board": {
+      "title": "Work Board",
+      "search": {
+        "title": "Title",
+        "placeholder": "Enter search term",
+        "dateStart": "Start Date:",
+        "dateEnd": "End Date:",
+        "itemsPerPage": "Items per page:",
+        "itemsCount": "items"
+      },
+      "table": {
+        "number": "No.",
+        "title": "Title",
+        "date": "Date",
+        "views": "Views"
+      },
+      "pagination": {
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "noPosts": "No posts available."
+    }
+  }
+}

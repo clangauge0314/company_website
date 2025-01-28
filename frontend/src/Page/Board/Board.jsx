@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import BoardLocale from "../../Locale/Board.json";
 
 const Board = () => {
   const [posts, setPosts] = React.useState([]);
@@ -11,6 +12,7 @@ const Board = () => {
   const [searchType, setSearchType] = React.useState("title");
   const [startDate, setStartDate] = React.useState("");
   const [endDate, setEndDate] = React.useState("");
+  const [language, setLanguage] = React.useState(localStorage.getItem('language') || 'ko');
 
   const navigate = useNavigate();
 
@@ -26,6 +28,22 @@ const Board = () => {
 
     fetchPosts();
   }, []);
+
+  React.useEffect(() => {
+    const handleLanguageChange = () => {
+      setLanguage(localStorage.getItem('language') || 'ko');
+    };
+
+    window.addEventListener('languageChange', handleLanguageChange);
+    return () => {
+      window.removeEventListener('languageChange', handleLanguageChange);
+    };
+  }, []);
+
+  const t = (key) => {
+    const keys = key.split(".");
+    return keys.reduce((obj, k) => obj[k], BoardLocale[language]);
+  };
 
   const filteredPosts = React.useMemo(() => {
     return posts.filter((post) => {
@@ -71,7 +89,7 @@ const Board = () => {
         variants={fadeIn}
         custom={0}
       >
-        업무 게시판
+        {t("board.title")}
       </motion.h1>
 
       <motion.div
@@ -85,12 +103,12 @@ const Board = () => {
             value={searchType}
             onChange={(e) => setSearchType(e.target.value)}
           >
-            <option value="title">제목</option>
+            <option value="title">{t("board.search.title")}</option>
           </select>
           <div className="flex-1 md:w-80">
             <input
               type="text"
-              placeholder="검색어를 입력하세요"
+              placeholder={t("board.search.placeholder")}
               className="w-full border rounded px-3 py-2 text-base"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -100,7 +118,7 @@ const Board = () => {
 
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           <div className="flex items-center gap-2">
-            <label className="text-sm font-bold">작성일 시작:</label>
+            <label className="text-sm font-bold">{t("board.search.dateStart")}</label>
             <input
               type="date"
               className="border rounded px-3 py-2 w-full md:w-auto"
@@ -109,7 +127,7 @@ const Board = () => {
             />
           </div>
           <div className="flex items-center gap-2">
-            <label className="text-sm font-bold">작성일 끝:</label>
+            <label className="text-sm font-bold">{t("board.search.dateEnd")}</label>
             <input
               type="date"
               className="border rounded px-3 py-2 w-full md:w-auto"
@@ -120,7 +138,7 @@ const Board = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <label className="text-sm font-bold">페이지당 표시:</label>
+          <label className="text-sm font-bold">{t("board.search.itemsPerPage")}</label>
           <select
             className="border rounded px-3 py-2"
             value={pageSize}
@@ -130,7 +148,7 @@ const Board = () => {
             }}
           >
             {[10, 25, 50, 100].map((size) => (
-              <option key={size} value={size}>{`${size}개`}</option>
+              <option key={size} value={size}>{`${size}${t("board.search.itemsCount")}`}</option>
             ))}
           </select>
         </div>
@@ -145,16 +163,16 @@ const Board = () => {
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider w-[8%]">
-                번호
+                {t("board.table.number")}
               </th>
               <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider w-auto">
-                제목
+                {t("board.table.title")}
               </th>
               <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider w-[15%]">
-                작성일
+                {t("board.table.date")}
               </th>
               <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider w-[8%]">
-                조회수
+                {t("board.table.views")}
               </th>
             </tr>
           </thead>
@@ -165,7 +183,7 @@ const Board = () => {
                   colSpan="4"
                   className="px-4 py-8 text-center text-gray-500"
                 >
-                  게시글이 없습니다.
+                  {t("board.noPosts")}
                 </td>
               </tr>
             ) : (
@@ -199,7 +217,7 @@ const Board = () => {
       >
         {paginatedPosts.length === 0 ? (
           <div className="col-span-full text-center text-gray-500">
-            게시글이 없습니다.
+            {t("board.noPosts")}
           </div>
         ) : (
           paginatedPosts.map((post, index) => (
@@ -235,7 +253,7 @@ const Board = () => {
           onClick={() => setCurrentPage((p) => p - 1)}
           disabled={currentPage === 1 || totalPages === 0}
         >
-          이전
+          {t("board.pagination.prev")}
         </button>
         <span className="px-3 py-1">
           {totalPages > 0 ? `${currentPage} / ${totalPages}` : "0 / 0"}
@@ -245,7 +263,7 @@ const Board = () => {
           onClick={() => setCurrentPage((p) => p + 1)}
           disabled={currentPage >= totalPages || totalPages === 0}
         >
-          다음
+          {t("board.pagination.next")}
         </button>
       </motion.div>
     </motion.div>

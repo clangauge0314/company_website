@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import ContactLocale from "../../Locale/Contact-Components.json";
 
 const Contact = () => {
+  const [language, setLanguage] = useState(localStorage.getItem('language') || 'ko');
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setLanguage(localStorage.getItem('language') || 'ko');
+    };
+
+    window.addEventListener('languageChange', handleLanguageChange);
+    return () => {
+      window.removeEventListener('languageChange', handleLanguageChange);
+    };
+  }, []);
+
+  const t = (key) => {
+    const keys = key.split(".");
+    return keys.reduce((obj, k) => obj[k], ContactLocale[language]);
+  };
+
   const gridVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: (i) => ({
@@ -39,28 +58,28 @@ const Contact = () => {
             className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4"
             variants={titleVariant}
           >
-            문의하기
+            {t("contact.title")}
           </motion.h2>
           <motion.p className="text-gray-600 text-lg" variants={titleVariant}>
-            궁금하신 점이 있으신가요? 언제든 문의해주세요.
+            {t("contact.subtitle")}
           </motion.p>
         </motion.div>
         <div className="grid md:grid-cols-3 gap-6 mb-20">
           {[
             {
-              title: "전화 문의",
-              info: "02-1234-5678",
-              subInfo: "평일 09:00 - 18:00",
+              title: t("contact.contactMethods.phone.title"),
+              info: t("contact.contactMethods.phone.info"),
+              subInfo: t("contact.contactMethods.phone.subInfo"),
             },
             {
-              title: "이메일 문의",
-              info: "support@example.com",
-              subInfo: "24시간 접수 가능",
+              title: t("contact.contactMethods.email.title"),
+              info: t("contact.contactMethods.email.info"),
+              subInfo: t("contact.contactMethods.email.subInfo"),
             },
             {
-              title: "위치",
-              info: "서울특별시 강남구",
-              subInfo: "삼성동 123번지",
+              title: t("contact.contactMethods.location.title"),
+              info: t("contact.contactMethods.location.info"),
+              subInfo: t("contact.contactMethods.location.subInfo"),
             },
           ].map((item, index) => (
             <motion.div
@@ -105,7 +124,7 @@ const Contact = () => {
             to="/contact"
             className="inline-block px-10 py-3 text-lg font-medium text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 transition-all duration-300 ease-in-out hover:shadow-lg"
           >
-            문의하기
+            {t("contact.button")}
           </Link>
         </motion.div>
       </div>

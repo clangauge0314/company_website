@@ -2,10 +2,28 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import ForumLocale from "../../Locale/Forum.json";
 
 const Forum = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [language, setLanguage] = useState(localStorage.getItem('language') || 'ko');
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setLanguage(localStorage.getItem('language') || 'ko');
+    };
+
+    window.addEventListener('languageChange', handleLanguageChange);
+    return () => {
+      window.removeEventListener('languageChange', handleLanguageChange);
+    };
+  }, []);
+
+  const t = (key) => {
+    const keys = key.split(".");
+    return keys.reduce((obj, k) => obj[k], ForumLocale[language]);
+  };
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -13,7 +31,7 @@ const Forum = () => {
         const response = await axios.get("http://localhost:3000/api/post");
         setPosts(response.data.slice(0, 5));
       } catch (error) {
-        console.log("게시글 로딩 실패: ", error);
+        console.log(t("forum.errors.loadFailed"), error);
       } finally {
         setLoading(false);
       }
@@ -54,7 +72,7 @@ const Forum = () => {
             className="text-4xl lg:text-5xl font-bold text-gray-900"
             variants={itemVariants}
           >
-            업무 게시판
+            {t("forum.title")}
           </motion.h2>
         </div>
 
@@ -64,7 +82,7 @@ const Forum = () => {
             className="px-5 py-2 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors duration-300 flex items-center gap-2 border border-gray-200"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            전체보기
+            {t("forum.viewAll")}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"
@@ -93,7 +111,7 @@ const Forum = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              로딩 중...
+              {t("forum.loading")}
             </motion.div>
           ) : posts.length === 0 ? (
             <motion.div
@@ -102,7 +120,7 @@ const Forum = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              최근 게시물이 없습니다.
+              {t("forum.noRecentPosts")}
             </motion.div>
           ) : (
             posts.map((post, index) => (
@@ -117,14 +135,14 @@ const Forum = () => {
                     <div className="flex-1">
                       <div className="flex items-center gap-4 mb-2">
                         <span className="text-gray-500 text-sm">
-                          No. {post.number}
+                          {t("forum.postInfo.number")} {post.number}
                         </span>
                         <span className="text-gray-500 text-sm">
-                          조회수: {post.views}
+                          {t("forum.postInfo.views")}: {post.views}
                         </span>
                         {post.fileUrl.length > 0 && (
                           <span className="text-gray-500 text-sm">
-                            파일: {post.fileUrl.length}
+                            {t("forum.postInfo.files")}: {post.fileUrl.length}
                           </span>
                         )}
                       </div>

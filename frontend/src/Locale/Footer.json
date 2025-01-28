@@ -1,0 +1,58 @@
+{
+  "ko": {
+    "footer": {
+      "company": {
+        "title": "회사 소개",
+        "description": "저희 회사는 최고의 서비스를 제공하기 위해 노력하고 있습니다."
+      },
+      "quickLinks": {
+        "title": "빠른 링크",
+        "home": "홈",
+        "about": "회사 정보",
+        "leadership": "임원 소개",
+        "board": "업무 게시판",
+        "services": "제공 기술",
+        "contact": "문의"
+      },
+      "contact": {
+        "title": "연락처",
+        "address1": "서울특별시 강남구",
+        "address2": "삼성동 123번지",
+        "phone": "전화: 02-1234-5678",
+        "email": "이메일: info@example.com"
+      },
+      "social": {
+        "title": "소셜 미디어"
+      },
+      "copyright": "© 2024 ABC Company. All rights reserved."
+    }
+  },
+  "en": {
+    "footer": {
+      "company": {
+        "title": "About Us",
+        "description": "We strive to provide the best service to our customers."
+      },
+      "quickLinks": {
+        "title": "Quick Links",
+        "home": "Home",
+        "about": "About",
+        "leadership": "Leadership",
+        "board": "Board",
+        "services": "Services",
+        "contact": "Contact"
+      },
+      "contact": {
+        "title": "Contact",
+        "address1": "Gangnam-gu, Seoul",
+        "address2": "123 Samsung-dong",
+        "phone": "Tel: 02-1234-5678",
+        "email": "Email: info@example.com"
+      },
+      "social": {
+        "title": "Social Media"
+      },
+      "copyright": "© 2024 ABC Company. All rights reserved."
+    }
+  }
+}

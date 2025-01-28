@@ -1,0 +1,128 @@
+{
+  "ko": {
+    "pageTitle": "임원진 소개",
+    "pageSubtitle": "혁신과 성장을 이끄는 ABC Company의 리더쉽",
+    "ceoSection": {
+      "title": "CEO 인사말",
+      "greeting": "안녕하십니까, ABC Company 대표이사 김대표입니다.",
+      "message1": "저희 ABC Company는 20년 이상의 전기 산업 경력을 바탕으로, 혁신적인 기술과 서비스를 통해 고객 여러분께 최상의 가치를 제공하기 위해 노력하고 있습니다.",
+      "message2": "급변하는 글로벌 시장 환경 속에서도 지속적인 연구개발과 품질 혁신을 통해 세계 최고 수준의 제품과 서비스를 제공하겠습니다.",
+      "signature": "ABC Company 대표이사 김대표 드림",
+      "name": "김대표",
+      "position": "대표이사"
+    },
+    "executivesSection": {
+      "title": "경영진",
+      "members": [
+        {
+          "name": "이부사장",
+          "position": "COO",
+          "description": "운영 총괄 책임자로서 효율적인 기업 운영과 프로세스 혁신을 주도하고 있습니다."
+        },
+        {
+          "name": "박이사",
+          "position": "CTO",
+          "description": "최신 기술 트렌드를 선도하며 R&D 부문을 총괄하고 있습니다."
+        },
+        {
+          "name": "김이사",
+          "position": "CFO",
+          "description": "재무 전략 수립 및 기업 가치 향상을 위한 재무관리를 담당하고 있습니다."
+        },
+        {
+          "name": "최이사",
+          "position": "CMO",
+          "description": "글로벌 마케팅 전략 수립 및 브랜드 가치 향상을 주도하고 있습니다."
+        }
+      ]
+    },
+    "teamSection": {
+      "title": "핵심 구성원",
+      "members": [
+        {
+          "name": "정과장",
+          "position": "개발팀장",
+          "description": "신제품 개발 및 기술 혁신을 담당하고 있습니다."
+        },
+        {
+          "name": "최과장",
+          "position": "영업팀장",
+          "description": "글로벌 시장 개척 및 고객 관리를 담당하고 있습니다."
+        },
+        {
+          "name": "한과장",
+          "position": "품질관리팀장",
+          "description": "제품 품질 향상 및 품질 시스템 관리를 담당하고 있습니다."
+        },
+        {
+          "name": "김과장",
+          "position": "인사팀장",
+          "description": "인사 정책 수립 및 인사 관리를 담당하고 있습니다."
+        }
+      ]
+    }
+  },
+  "en": {
+    "pageTitle": "Leadership",
+    "pageSubtitle": "ABC Company's Leadership Driving Innovation and Growth",
+    "ceoSection": {
+      "title": "CEO's Message",
+      "greeting": "Hello, I am CEO Kim of ABC Company.",
+      "message1": "ABC Company strives to provide the highest value to our customers through innovative technology and services, based on over 20 years of experience in the electrical industry.",
+      "message2": "Even in the rapidly changing global market environment, we will provide world-class products and services through continuous R&D and quality innovation.",
+      "signature": "Sincerely, CEO Kim of ABC Company",
+      "name": "Kim",
+      "position": "CEO"
+    },
+    "executivesSection": {
+      "title": "Executives",
+      "members": [
+        {
+          "name": "Lee",
+          "position": "COO",
+          "description": "Leading efficient corporate operations and process innovation as Chief Operating Officer."
+        },
+        {
+          "name": "Park",
+          "position": "CTO",
+          "description": "Leading the latest technology trends and overseeing R&D."
+        },
+        {
+          "name": "Kim",
+          "position": "CFO",
+          "description": "In charge of financial strategy development and financial management for corporate value enhancement."
+        },
+        {
+          "name": "Choi",
+          "position": "CMO",
+          "description": "Leading global marketing strategy and brand value enhancement."
+        }
+      ]
+    },
+    "teamSection": {
+      "title": "Key Members",
+      "members": [
+        {
+          "name": "Jung",
+          "position": "Development Team Leader",
+          "description": "In charge of new product development and technological innovation."
+        },
+        {
+          "name": "Choi",
+          "position": "Sales Team Leader",
+          "description": "In charge of global market development and customer management."
+        },
+        {
+          "name": "Han",
+          "position": "Quality Control Team Leader",
+          "description": "In charge of product quality improvement and quality system management."
+        },
+        {
+          "name": "Kim",
+          "position": "HR Team Leader",
+          "description": "In charge of HR policy development and personnel management."
+        }
+      ]
+    }
+  }
+}

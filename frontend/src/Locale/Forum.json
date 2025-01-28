@@ -1,0 +1,34 @@
+{
+  "ko": {
+    "forum": {
+      "title": "업무 게시판",
+      "viewAll": "전체보기",
+      "loading": "로딩 중...",
+      "noRecentPosts": "최근 게시물이 없습니다.",
+      "postInfo": {
+        "number": "No.",
+        "views": "조회수",
+        "files": "파일"
+      },
+      "errors": {
+        "loadFailed": "게시글 로딩 실패"
+      }
+    }
+  },
+  "en": {
+    "forum": {
+      "title": "Work Board",
+      "viewAll": "View All",
+      "loading": "Loading...",
+      "noRecentPosts": "No recent posts.",
+      "postInfo": {
+        "number": "No.",
+        "views": "Views",
+        "files": "Files"
+      },
+      "errors": {
+        "loadFailed": "Failed to load posts"
+      }
+    }
+  }
+}

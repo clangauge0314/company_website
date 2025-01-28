@@ -1,0 +1,50 @@
+{
+  "ko": {
+    "contact": {
+      "title": "문의하기",
+      "subtitle": "궁금하신 점이 있으신가요? 언제든 문의해주세요.",
+      "contactMethods": {
+        "phone": {
+          "title": "전화 문의",
+          "info": "02-1234-5678",
+          "subInfo": "평일 09:00 - 18:00"
+        },
+        "email": {
+          "title": "이메일 문의",
+          "info": "support@example.com",
+          "subInfo": "24시간 접수 가능"
+        },
+        "location": {
+          "title": "위치",
+          "info": "서울특별시 강남구",
+          "subInfo": "삼성동 123번지"
+        }
+      },
+      "button": "문의하기"
+    }
+  },
+  "en": {
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "Have any questions? Feel free to contact us anytime.",
+      "contactMethods": {
+        "phone": {
+          "title": "Phone",
+          "info": "02-1234-5678",
+          "subInfo": "Weekdays 09:00 - 18:00"
+        },
+        "email": {
+          "title": "Email",
+          "info": "support@example.com",
+          "subInfo": "Available 24/7"
+        },
+        "location": {
+          "title": "Location",
+          "info": "Gangnam-gu, Seoul",
+          "subInfo": "123 Samsung-dong"
+        }
+      },
+      "button": "Contact Us"
+    }
+  }
+}

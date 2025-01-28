@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
+import translations from '../../Locale/Navbar.json';
 
 const menuItems = [
-  { path: "/", label: "홈" },
-  { path: "/about", label: "회사 정보" },
-  { path: "/leadership", label: "임원 소개" },
-  { path: "/board", label: "업무 게시판" },
-  { path: "/our-services", label: "제공 기술" },
-  { path: "/contact", label: "문의하기" },
+  { path: "/", key: "home" },
+  { path: "/about", key: "about" },
+  { path: "/leadership", key: "leadership" },
+  { path: "/board", key: "board" },
+  { path: "/our-services", key: "services" },
+  { path: "/contact", key: "contact" },
 ];
 
 const MenuItem = ({ path, label, onClick }) => (
@@ -28,7 +29,12 @@ const MenuItem = ({ path, label, onClick }) => (
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [language, setLanguage] = useState("ko");
+  const [language, setLanguage] = useState(localStorage.getItem('language') || 'ko');
+
+  useEffect(() => {
+    localStorage.setItem('language', language);
+    window.dispatchEvent(new Event('languageChange'));
+  }, [language]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -38,18 +44,21 @@ const NavBar = () => {
         <h1 className="text-xl lg:text-2xl font-bold lg:ml-12 lg:mr-8">
           <Link
             to="/"
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            ABC Company
+            {translations[language].company.name}
           </Link>
         </h1>
 
         <div className="hidden lg:flex flex-1 justify-center">
           <ul className="flex gap-8 text-lg">
             {menuItems.map((item) => (
-              <MenuItem key={item.path} {...item} onClick={() => {}} />
+              <MenuItem
+                key={item.path}
+                path={item.path}
+                label={translations[language].menu[item.key]}
+                onClick={() => {}}
+              />
             ))}
           </ul>
         </div>
@@ -59,14 +68,14 @@ const NavBar = () => {
           onChange={(e) => setLanguage(e.target.value)}
           className="hidden lg:block px-3 py-1 ml-8 border rounded-md bg-white hover:border-blue-500 transition duration-300"
         >
-          <option value="ko">한국어</option>
-          <option value="en">English</option>
+          <option value="ko">{translations.ko.language}</option>
+          <option value="en">{translations.en.language}</option>
         </select>
 
         <button
           className="lg:hidden text-2xl"
           onClick={toggleMenu}
-          aria-label="메뉴"
+          aria-label={translations[language].buttons.menu}
         >
           {isOpen ? <HiX /> : <HiMenu />}
         </button>
@@ -81,7 +90,7 @@ const NavBar = () => {
           <button
             className="text-2xl mb-8 float-right"
             onClick={toggleMenu}
-            aria-label="닫기"
+            aria-label={translations[language].buttons.close}
           >
             <HiX />
           </button>
@@ -89,10 +98,9 @@ const NavBar = () => {
             {menuItems.map((item) => (
               <MenuItem
                 key={item.path}
-                {...item}
-                onClick={() => {
-                  setIsOpen(false);
-                }}
+                path={item.path}
+                label={translations[language].menu[item.key]}
+                onClick={() => setIsOpen(false)}
               />
             ))}
           </ul>
@@ -101,8 +109,8 @@ const NavBar = () => {
             onChange={(e) => setLanguage(e.target.value)}
             className="mt-6 w-full px-3 py-1 border rounded-md bg-white hover:border-blue-500 transition duration-300"
           >
-            <option value="ko">한국어</option>
-            <option value="en">English</option>
+            <option value="ko">{translations.ko.language}</option>
+            <option value="en">{translations.en.language}</option>
           </select>
         </div>
       </div>
