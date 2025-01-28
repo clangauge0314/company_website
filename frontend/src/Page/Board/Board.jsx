@@ -1,19 +1,20 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Board = () => {
-  const [posts, setPosts] = useState([]);
-  const [pageSize, setPageSize] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchType, setSearchType] = useState("title");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [posts, setPosts] = React.useState([]);
+  const [pageSize, setPageSize] = React.useState(10);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchType, setSearchType] = React.useState("title");
+  const [startDate, setStartDate] = React.useState("");
+  const [endDate, setEndDate] = React.useState("");
 
   const navigate = useNavigate();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get("http://localhost:3000/api/post");
@@ -26,7 +27,7 @@ const Board = () => {
     fetchPosts();
   }, []);
 
-  const filteredPosts = useMemo(() => {
+  const filteredPosts = React.useMemo(() => {
     return posts.filter((post) => {
       const value = post[searchType]?.toLowerCase() || "";
       const matchesSearch = value.includes(searchTerm.toLowerCase());
@@ -45,16 +46,39 @@ const Board = () => {
   const totalPages =
     pageSize > 0 ? Math.ceil(filteredPosts.length / pageSize) : 1;
 
-  const paginatedPosts = useMemo(() => {
+  const paginatedPosts = React.useMemo(() => {
     const start = (currentPage - 1) * pageSize;
     return filteredPosts.slice(start, start + pageSize);
   }, [filteredPosts, currentPage, pageSize]);
 
-  return (
-    <div className="p-4 mx-auto max-w-7xl py-32">
-      <h1 className="text-4xl font-bold mb-6 text-center">업무 게시판</h1>
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: i * 0.2 },
+    }),
+  };
 
-      <div className="mb-4 flex flex-col md:flex-row justify-between items-center gap-4">
+  return (
+    <motion.div
+      className="p-4 mx-auto max-w-7xl py-32"
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.h1
+        className="text-4xl font-bold mb-6 text-center"
+        variants={fadeIn}
+        custom={0}
+      >
+        업무 게시판
+      </motion.h1>
+
+      <motion.div
+        className="mb-4 flex flex-col md:flex-row justify-between items-center gap-4"
+        variants={fadeIn}
+        custom={1}
+      >
         <div className="flex w-full md:w-auto gap-2">
           <select
             className="border rounded px-3 py-2 text-base"
@@ -110,9 +134,13 @@ const Board = () => {
             ))}
           </select>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="hidden md:block overflow-x-auto">
+      <motion.div
+        className="hidden md:block overflow-x-auto"
+        variants={fadeIn}
+        custom={2}
+      >
         <table className="min-w-full bg-white border rounded-lg">
           <thead className="bg-gray-50">
             <tr>
@@ -142,35 +170,45 @@ const Board = () => {
               </tr>
             ) : (
               paginatedPosts.map((post, index) => (
-                <tr onClick={() => {navigate(`/post/${post._id}`)}} key={post._id} className="hover:bg-gray-50 cursor-pointer">
+                <motion.tr
+                  key={post._id}
+                  onClick={() => navigate(`/post/${post._id}`)}
+                  className="hover:bg-gray-50 cursor-pointer"
+                  variants={fadeIn}
+                  custom={3 + index}
+                >
                   <td className="px-6 py-4 whitespace-nowrap">
                     {(currentPage - 1) * pageSize + index + 1}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {post.title}
-                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">{post.title}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {new Date(post.createdAt).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">{post.views}</td>
-                </tr>
+                </motion.tr>
               ))
             )}
           </tbody>
         </table>
-      </div>
+      </motion.div>
 
-      <div className="md:hidden grid grid-cols-1 gap-4">
+      <motion.div
+        className="md:hidden grid grid-cols-1 gap-4"
+        variants={fadeIn}
+        custom={3}
+      >
         {paginatedPosts.length === 0 ? (
           <div className="col-span-full text-center text-gray-500">
             게시글이 없습니다.
           </div>
         ) : (
           paginatedPosts.map((post, index) => (
-            <div
+            <motion.div
               key={post._id}
-              onClick={() => {navigate(`/post/${post._id}`)}}
+              onClick={() => navigate(`/post/${post._id}`)}
               className="border rounded-lg p-4 bg-white shadow-md hover:shadow-lg transition-shadow"
+              variants={fadeIn}
+              custom={4 + index}
             >
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-lg font-bold truncate">{post.title}</h3>
@@ -181,15 +219,17 @@ const Board = () => {
               <p className="text-sm text-gray-600 mb-3 truncate">
                 작성일: {new Date(post.createdAt).toLocaleDateString()}
               </p>
-              <p className="text-sm text-gray-600">
-                조회수: {post.views}
-              </p>
-            </div>
+              <p className="text-sm text-gray-600">조회수: {post.views}</p>
+            </motion.div>
           ))
         )}
-      </div>
+      </motion.div>
 
-      <div className="mt-4 flex justify-center space-x-2 text-lg font-bold">
+      <motion.div
+        className="mt-4 flex justify-center space-x-2 text-lg font-bold"
+        variants={fadeIn}
+        custom={5}
+      >
         <button
           className="px-3 py-1 rounded border disabled:opacity-50"
           onClick={() => setCurrentPage((p) => p - 1)}
@@ -207,8 +247,8 @@ const Board = () => {
         >
           다음
         </button>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

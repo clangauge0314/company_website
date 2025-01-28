@@ -8,7 +8,7 @@ const menuItems = [
   { path: "/leadership", label: "임원 소개" },
   { path: "/board", label: "업무 게시판" },
   { path: "/our-services", label: "제공 기술" },
-  { path: "/contact", label: "문의하기" }
+  { path: "/contact", label: "문의하기" },
 ];
 
 const MenuItem = ({ path, label, onClick }) => (
@@ -16,7 +16,10 @@ const MenuItem = ({ path, label, onClick }) => (
     <Link
       to={path}
       className="hover:text-blue-600 transition duration-300"
-      onClick={onClick}
+      onClick={() => {
+        onClick();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
     >
       {label}
     </Link>
@@ -25,25 +28,33 @@ const MenuItem = ({ path, label, onClick }) => (
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [language, setLanguage] = useState('ko');
+  const [language, setLanguage] = useState("ko");
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white text-black p-4 shadow-lg z-50">
-
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl lg:text-2xl font-bold lg:ml-12 lg:mr-8"><Link to="/">ABC Company</Link></h1>
+        <h1 className="text-xl lg:text-2xl font-bold lg:ml-12 lg:mr-8">
+          <Link
+            to="/"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            ABC Company
+          </Link>
+        </h1>
 
         <div className="hidden lg:flex flex-1 justify-center">
           <ul className="flex gap-8 text-lg">
             {menuItems.map((item) => (
-              <MenuItem key={item.path} {...item} />
+              <MenuItem key={item.path} {...item} onClick={() => {}} />
             ))}
           </ul>
         </div>
 
-        <select 
+        <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
           className="hidden lg:block px-3 py-1 ml-8 border rounded-md bg-white hover:border-blue-500 transition duration-300"
@@ -81,12 +92,11 @@ const NavBar = () => {
                 {...item}
                 onClick={() => {
                   setIsOpen(false);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               />
             ))}
           </ul>
-          <select 
+          <select
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
             className="mt-6 w-full px-3 py-1 border rounded-md bg-white hover:border-blue-500 transition duration-300"
