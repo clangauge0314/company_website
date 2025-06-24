@@ -37,7 +37,7 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ username }).select("+password");
 
     if (!user) {
-      return res.status("401").json({ message: "사용자를 찾을 수 없습니다." });
+      return res.status(401).json({ message: "사용자를 찾을 수 없습니다." });
     }
 
     if (!user.isActive) {
